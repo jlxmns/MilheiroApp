@@ -1,0 +1,28 @@
+<nav class="px-20 py-10 flex flex-row justify-between items-center bg-gradient-to-b from-blue-700 to-blue-800 text-white">
+    <div class="hover:text-blue-950 cursor-pointer">LOGO</div>
+    <div class="flex flex-row justify-between gap-16">
+        <span class="py-2 px-4 rounded border border-blue-400 border-opacity-0 cursor-pointer hover:text-blue-400 hover:border-opacity-100"
+              x-transition @click="window.location.href = '{% url 'milheiro:index' %}'">Home</span>
+        <span class="py-2 px-4 rounded border border-blue-400 border-opacity-0 cursor-pointer hover:text-blue-400 hover:border-opacity-100"
+              x-transition @click="window.location.href = ''">Meus Pontos</span>
+        <span class="py-2 px-4 rounded border border-blue-400 border-opacity-0 cursor-pointer hover:text-blue-400 hover:border-opacity-100"
+              x-transition @click="window.location.href = ''">Plataformas</span>
+        <span class="py-2 px-4 rounded border border-blue-400 border-opacity-0 cursor-pointer hover:text-blue-400 hover:border-opacity-100"
+              x-transition @click="window.location.href = ''">Gerenciar Pessoas</span>
+    </div>
+    {% if user.is_authenticated %}
+        <div x-data="{ showSubMenu: false }" class="relative">
+            <a @click="showSubMenu = !showSubMenu" @click.outside="showSubMenu = false"
+               class="cursor-pointer">{% include 'svg/account_circle_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg' %}</a>
+            <div class="top-10 -left-4 absolute rounded-xl bg-gray-100 p-2 text-red-600 cursor-pointer"
+                 x-show="showSubMenu" @click="window.location.href = '{% url 'account_logout' %}'">Logout
+            </div>
+        </div>
+    {% else %}
+        <div class="flex flex-row gap-4">
+            <a class="hover:text-blue-950" href="{% url 'account_login' %}">Login</a>
+            <span>|</span>
+            <a class="hover:text-blue-950" href="{% url 'account_signup' %}">Register</a>
+        </div>
+    {% endif %}
+</nav>

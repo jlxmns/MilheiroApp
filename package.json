@@ -1,0 +1,11 @@
+{
+  "name": "milheiro-app",
+  "description": "App para calcular milhas",
+  "scripts": {
+    "tailwind:build": "tailwindcss -i MilheiroApp/styles.css -o milheiro/static/css/styles.css --minify",
+    "tailwind:watch": "tailwindcss -i MilheiroApp/styles.css -o milheiro/static/css/styles.css --watch --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.15"
+  }
+}
