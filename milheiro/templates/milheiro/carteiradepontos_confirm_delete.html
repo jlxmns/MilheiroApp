@@ -1,0 +1,18 @@
+{% extends 'milheiro/skeleton.html' %}
+{% load static tailwind_filters crispy_forms_tags %}
+
+{% block content %}
+<div class="flex justify-center items-center h-screen w-screen">
+    <form method="post" class="space-y-8">{% csrf_token %}
+        <p>Tem certeza que deseja deletar "{{ object }}"?</p>
+        {{ form }}
+        <div class="flex flex-row justify-center gap-4">
+            <button type="submit" class="bg-green-600/40 rounded-lg p-2 hover:bg-green-600/60">Adicionar
+            </button>
+            <button type="button" class="bg-red-600/40 rounded-lg p-2 hover:bg-red-600/60"
+                    onclick="window.location.href='{% url 'milheiro:pontos' %}'">Cancelar
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

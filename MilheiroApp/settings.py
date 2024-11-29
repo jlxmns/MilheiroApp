@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'widget_tweaks',
     'slippers',
+    'crispy_forms',
+    'crispy_tailwind',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -155,3 +157,7 @@ STATIC_ROOT = os.path.join(PROJECT_PATH, "deploy/static")
 
 LOGIN_REDIRECT_URL = '/milheiro'
 LOGOUT_REDIRECT_URL = '/milheiro'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"

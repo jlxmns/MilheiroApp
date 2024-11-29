@@ -25,14 +25,19 @@ class GroupAdmin(BaseGroupAdmin, ModelAdmin):
 @admin.register(Plataforma)
 class PlataformaAdmin(ModelAdmin):
     fields = ('nome', 'custo_ponto')
-    list_display = ('nome', 'custo_ponto')
+    list_display = ('nome', 'custo_ponto', 'created_by')
     list_per_page = 10
     form = forms.PlataformaForm
+
+    def save_model(self, request, obj, form, change):
+        if not change:
+            obj.created_by = request.user
+        obj.save()
 
 
 @admin.register(CarteiraDePontos)
 class CarteiraDePontosAdmin(ModelAdmin):
-    fields = ('plataforma', 'pessoa', 'pontos')
-    list_display = ('plataforma', 'pontos')
+    fields = ('plataforma', 'pessoa', 'pontos', 'valor', 'descricao', 'data_aquisicao', 'data_expiracao')
+    list_display = ('plataforma',)
     list_per_page = 10
     form = forms.CarteiraDePontosForm
